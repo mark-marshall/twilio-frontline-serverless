@@ -10,8 +10,7 @@ const OPENER_NEW_PRODUCT =
   'Hello {{Name}} we have a new product out which may be of interest to your business. Drop me a message. {{Author}}.';
 const OPENER_ON_MY_WAY =
   'Just to confirm I am on my way to your office. {{Name}}.';
-const OPENER_BOILER_FOLLOWUP =
-  'Hi {{Name}}, Im pleased to say that your boiler passed its service. Please let me know any other questions regarding the certificate or carrying out additional works.';
+const OPENER_GENERAL = 'Hi there, how can we help you today?';
 
 const REPLY_SENT = 'This has now been sent. {{Author}}.';
 const REPLY_RATES =
@@ -68,7 +67,7 @@ exports.handler = async function (context, event, callback) {
           },
           { content: compileTemplate(OPENER_ON_MY_WAY, customerDetails) },
           {
-            content: compileTemplate(OPENER_BOILER_FOLLOWUP, customerDetails),
+            content: compileTemplate(OPENER_GENERAL, customerDetails),
             whatsAppApproved: true,
           },
         ],
