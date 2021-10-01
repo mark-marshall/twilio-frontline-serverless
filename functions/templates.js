@@ -63,7 +63,6 @@ exports.handler = async function (context, event, callback) {
           { content: compileTemplate(OPENER_NEXT_STEPS, customerDetails) }, // Compiled template
           {
             content: compileTemplate(OPENER_NEW_PRODUCT, customerDetails),
-            whatsAppApproved: true,
           },
           { content: compileTemplate(OPENER_ON_MY_WAY, customerDetails) },
           {
