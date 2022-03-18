@@ -9,8 +9,8 @@ exports.handler = async function (context, event, callback) {
   response.setHeaders(headers);
 
   // Route handlers
-  const getCustomerProxyAddress = (channelName) => {
-    if (channelName === 'whatsapp') {
+  const getCustomerProxyAddress = (channelType) => {
+    if (channelType === 'whatsapp') {
       return context.WHATSAPP_NUMBER;
     } else {
       return context.SMS_NUMBER;
@@ -18,10 +18,11 @@ exports.handler = async function (context, event, callback) {
   };
 
   const handleGetProxyAddress = () => {
-    const { CustomerId: customerId, Channel: channel } = event;
-    const { type: channelName, value: channelAddress } = channel;
+    console.log(event);
 
-    const proxyAddress = getCustomerProxyAddress(channelName);
+    const { CustomerId: customerId, ChannelType: channelType } = event;
+
+    const proxyAddress = getCustomerProxyAddress(channelType);
 
     // In order to start a new conversation ConversationsApp need a proxy address
     // otherwise the app doesn't know from which number send a message to a customer
